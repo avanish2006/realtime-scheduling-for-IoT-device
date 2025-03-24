@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <limits.h>
 
-// Task structure
 typedef struct {
     int id;
     int arrival_time;
@@ -17,14 +16,12 @@ typedef struct {
     int first_execution;
 } Task;
 
-// Function to swap two integers
 void swap(int *a, int *b) {
     int temp = *a;
     *a = *b;
     *b = temp;
 }
 
-// Function to display results
 void displayResults(Task *tasks, int n) {
     printf("\nTask\tAT\tBT\tCT\tTAT\tWT\tRT\n");
     for (int i = 0; i < n; i++) {
@@ -35,11 +32,9 @@ void displayResults(Task *tasks, int n) {
     }
 }
 
-// Function to implement FCFS scheduling
 void fcfs(Task *tasks, int n) {
     int current_time = 0;
 
-    // Sort tasks by arrival time
     for (int i = 0; i < n - 1; i++) {
         for (int j = i + 1; j < n; j++) {
             if (tasks[i].arrival_time > tasks[j].arrival_time) {
@@ -58,19 +53,17 @@ void fcfs(Task *tasks, int n) {
         current_time = tasks[i].completion_time;
         tasks[i].turnaround_time = tasks[i].completion_time - tasks[i].arrival_time;
         tasks[i].waiting_time = tasks[i].turnaround_time - tasks[i].burst_time;
-        tasks[i].response_time = tasks[i].waiting_time; // FCFS
+        tasks[i].response_time = tasks[i].waiting_time; 
     }
     displayResults(tasks, n);
 }
 
-// Function to implement SJF (Non-Preemptive) scheduling
 void sjfNonPreemptive(Task *tasks, int n) {
     int current_time = 0;
     int completed = 0;
     int is_completed[n];
     for(int i = 0; i < n; i++) is_completed[i] = 0;
 
-    // Sort tasks by arrival time
     for (int i = 0; i < n - 1; i++) {
         for (int j = i + 1; j < n; j++) {
             if (tasks[i].arrival_time > tasks[j].arrival_time) {
@@ -99,7 +92,7 @@ void sjfNonPreemptive(Task *tasks, int n) {
             current_time = tasks[idx].completion_time;
             tasks[idx].turnaround_time = tasks[idx].completion_time - tasks[idx].arrival_time;
             tasks[idx].waiting_time = tasks[idx].turnaround_time - tasks[idx].burst_time;
-            tasks[idx].response_time = tasks[idx].waiting_time; // SJF Non Preemptive
+            tasks[idx].response_time = tasks[idx].waiting_time; 
             is_completed[idx] = 1;
             completed++;
         }
@@ -107,14 +100,12 @@ void sjfNonPreemptive(Task *tasks, int n) {
     displayResults(tasks, n);
 }
 
-// Function to implement SJF (Preemptive) scheduling
 void sjfPreemptive(Task *tasks, int n) {
     int current_time = 0;
     int completed = 0;
     int is_completed[n];
     for (int i = 0; i < n; i++) is_completed[i] = 0;
 
-    // Sort tasks by arrival time
     for (int i = 0; i < n - 1; i++) {
         for (int j = i + 1; j < n; j++) {
             if (tasks[i].arrival_time > tasks[j].arrival_time) {
