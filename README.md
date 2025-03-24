@@ -95,7 +95,7 @@ To compile and run the program, follow these steps:
 
 1. **Clone the repository**:
     ```bash
-    git clone [<repository_url>](https://github.com/avanish2006/realtime-scheduling-for-IoT-device.git)
+    git clone https://github.com/avanish2006/realtime-scheduling-for-IoT-device.git
     cd realtime-scheduling-for-IoT-device
     ```
 
