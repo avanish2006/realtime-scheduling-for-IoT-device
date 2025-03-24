@@ -101,12 +101,12 @@ To compile and run the program, follow these steps:
 
 2. **Compile the code**:
     ```bash
-    gcc -o scheduler scheduler.c
+    gcc -o main main.c
     ```
 
 3. **Run the program**:
     ```bash
-    ./scheduler
+    ./main
     ```
 
 4. **Provide input** for the number of tasks and their respective arrival and burst times as prompted.
